@@ -3,14 +3,15 @@ import "./TripList.css";
 
 export default function TripList() {
   const [trips, setTrips] = useState([]);
+  const [url, setUrl] = useState("http://localhost:3000/trips");
 
   useEffect(() => {
     // Fetch the trips data when the component mounts
-    fetch("http://localhost:3000/trips")
+    fetch(url)
       .then((response) => response.json())
       .then((json) => setTrips(json))
       .catch((error) => console.error("Error fetching trips:", error)); // Catch errors
-  }, []); // Empty dependency array ensures this runs once when the component mounts
+  }, [url]); // Empty dependency array ensures this runs once when the component mounts
 
   return (
     <div className="trip-list">
@@ -24,6 +25,23 @@ export default function TripList() {
           </li>
         ))}
       </ul>
+      <div className="filter">
+        <button onClick={() => setUrl("http://localhost:3000/trips?loc=mall")}>
+          Mall Trip
+        </button>
+
+        <button onClick={() => setUrl("http://localhost:3000/trips?loc=beach")}>
+          Beach trip
+        </button>
+        <button
+          onClick={() => setUrl("http://localhost:3000/trips?loc=bawing")}
+        >
+          Bawing trip
+        </button>
+        <button onClick={() => setUrl("http://localhost:3000/trips")}>
+          All trips
+        </button>
+      </div>
     </div>
   );
 }
