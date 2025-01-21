@@ -16,3 +16,22 @@
   list-style-type: none;
   margin: 20px 0;
 }
+
+.trip-list .filter {
+  display: flex;
+}
+
+.trip-list button {
+  background-color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  flex-grow: 1;
+  margin: auto 10px;
+  border-radius: 4px;
+  border-color: #e8e8e8;
+}
+
+.trip-list button:hover {
+  background-color: #e4e4e4;
+  color: #333;
+}
